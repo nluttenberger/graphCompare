@@ -40,7 +40,9 @@ with st.container(width=1024, horizontal_alignment="left", vertical_alignment="t
     )
     st.write("The conceptual ideas behind the method outlined here are outlined in the following."
     )
-    st.write("##### Graph construction"
+    st.write("###### Graph construction"
+    )
+    st.write("###### Editorial guidelines for recipes"
     )
 
 
