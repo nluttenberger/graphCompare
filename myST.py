@@ -45,6 +45,10 @@ with st.container(width=1024, horizontal_alignment="left", vertical_alignment="t
     st.write("###### Editorial guidelines for recipes"
     )
 
+# degree distribution
+with st.container(width=2400, horizontal_alignment="left", vertical_alignment="top", gap="small"):
+    st.image("degree distribution cumulative.svg")
+    st.write("Fig. xx: *Degree distribution*")
 
 # Davidis
 with st.container(width=2400, horizontal_alignment="left", vertical_alignment="top", gap="small"):
