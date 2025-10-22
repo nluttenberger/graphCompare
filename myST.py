@@ -37,9 +37,11 @@ with st.container(width=1024, horizontal_alignment="left", vertical_alignment="t
 with st.container(width=1024, horizontal_alignment="left", vertical_alignment="top", gap="small"):
     st.write("#### Concept"
     )
-    st.write(
-
+    st.write("The conceptual ideas behind the method outlined here are outlined in the following."
     )
+    st.write("##### Graph construction"
+    )
+
 
 # Davidis
 with st.container(width=2400, horizontal_alignment="left", vertical_alignment="top", gap="small"):
