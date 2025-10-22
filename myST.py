@@ -56,7 +56,7 @@ with st.container(width=2400, horizontal_alignment="left", vertical_alignment="t
     st.image("OL_fullGraph.svg", width=width_02)
     st.write("Fig. xx: *Ingredient graph for Ottolenghi recipes*")
 
-# Davidis vegetables only
+# Davidis vegetables only 
 #with st.container(width=2400, horizontal_alignment="left", vertical_alignment="top", gap="small"):
 #    width_02 = st.slider("",1000,2400,1600, key="s02")
 #    st.image("HD_Gemüse.svg", width=width_02)
