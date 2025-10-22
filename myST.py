@@ -3,6 +3,7 @@ import streamlit as st
 import base64
 
 # page
+st.set_page_config(page_title="On comparing graphs")
 st.set_page_config(layout="wide")
 
 
