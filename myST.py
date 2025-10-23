@@ -46,7 +46,7 @@ with st.container(width=1024, horizontal_alignment="left", vertical_alignment="t
     )
 
 # degree distribution
-with st.container(width=1200, horizontal_alignment="left", vertical_alignment="top", gap="small"):
+with st.container(width=768, horizontal_alignment="left", vertical_alignment="top", gap="small"):
     st.image("degree distribution cumulative.svg")
     st.write("Fig. xx: *Degree distribution*")
 
