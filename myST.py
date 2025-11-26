@@ -1,6 +1,32 @@
 
 import streamlit as st
-import base64
+import streamlit.components.v1 as components
+import xml.etree.ElementTree as ET
+
+def parse_svg_width(root):
+    w = root.get('width')
+    if w:
+        w = w.strip()
+        if w.endswith('px'):
+            w = w[:-2]
+        # falls Prozent o.ä. vorkommt, geben wir None zurück
+        try:
+            return int(float(w))
+        except Exception:
+            return None
+        
+def parse_svg_height(root):
+    h = root.get('height')
+    if h:
+        h = h.strip()
+        if h.endswith('px'):
+            h = h[:-2]
+        # falls Prozent o.ä. vorkommt, geben wir None zurück
+        try:
+            return int(float(h))
+        except Exception:
+            return None
+
 
 # page
 st.set_page_config(page_title="On comparing graphs")
@@ -51,10 +77,22 @@ with st.container(width=768, horizontal_alignment="left", vertical_alignment="to
     st.write("Fig. xx: *Degree distribution*")
 
 # Davidis
-with st.container(width=2400, horizontal_alignment="left", vertical_alignment="top", gap="small"):
-    width_01 = st.slider("",1000,2400,1600, key="s01")
-    st.image("HD_fullGraph.svg", width=width_01)
-    st.write("Fig. xx: *Ingredient graph for Davidis recipes*")
+#with st.container(width=2400, horizontal_alignment="left", vertical_alignment="top", gap="small"):
+    #width_01 = st.slider("",1000,2400,1600, key="s01")
+
+# SVG-Datei einlesen
+with open("USPresInaugAddr_0.16.svg", "r", encoding="utf-8") as f:
+    svg_content = f.read()
+# SVG parsen, um die Breite zu extrahieren
+root = ET.fromstring(svg_content)
+svg_width  = parse_svg_width(root)
+svg_height = parse_svg_height(root)
+# Anzeige anpassen
+scale_factor = svg_width//1600 if svg_width > 1600 else 1
+width_xx = st.slider("",1000,2400,1600, key="xx")
+inner_inline = f"<div style=\"width: {width_xx}px; height: {width_xx}px; \"><div style=\"width: 100%; height: 100%; display: flex; justify-content: left; align-items: center;\">{svg_content}</div></div>"
+components.html(inner_inline, height=width_xx, width=width_xx)
+#st.write("Fig. xx: *Ingredient graph for Davidis recipes*")
 
 # Ottolenghi
 with st.container(width=2400, horizontal_alignment="left", vertical_alignment="top", gap="small"):
@@ -77,5 +115,5 @@ with st.container(width=2400, horizontal_alignment="left", vertical_alignment="t
 # Ottolenghi vegetables only
 #with st.container(width=2400, horizontal_alignment="left", vertical_alignment="top", gap="small"):
 #    width_02 = st.slider("",1000,2400,1600,key="s02")
-#    st.image("Ottolenghi_Gemüse_only.svg", width=width_02)
+#    st.image("YO_Gemüse_only.svg", width=width_02)
 #    st.write("Fig. xx: *Vegetables in the Ottolenghi graph*")
